@@ -1,0 +1,12 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+tableau_cloud_state/
+screenshots/
+*.egg-info/
+.DS_Store
+log.txt
+data/
+build/
+dist/

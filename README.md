@@ -55,6 +55,37 @@ All of these were produced by code driving Tableau Cloud through the VizQL bridg
 | ![Horizontal bar chart with multiple filter controls](docs/images/bar-with-filters.png) | ![Four-chart retention dashboard](docs/images/nurse-retention-dashboard.png) |
 | **Bar + live filters** - ranked categories with several quick-filter cards. | **Composed dashboard** - four worksheets, containers, and cross-filters. |
 
+## Use it with Claude (recommended)
+
+The easiest way to use this is as a [Claude Code](https://claude.com/claude-code)
+plugin. You describe what you want in plain English and Claude builds it. The
+plugin **sets up its own environment on first run**, so no Python work is required
+of you.
+
+In Claude Code:
+
+```
+/plugin marketplace add CooperFryar/tableau-vizql-bridge
+/plugin install tableau@tableau-vizql-bridge
+```
+
+Then start it (or just ask Claude in plain English):
+
+```
+/tableau:tableau
+```
+
+On first run Claude installs a private environment, opens a browser for you to log
+in to Tableau Cloud once (no password is stored), then asks whether you want to
+continue an open workbook, start a new one, or do something else. From there just
+ask: *"build a sales-by-region bar chart"*, *"add a top 10 filter"*, *"make a
+dashboard that cross-filters it"*.
+
+**Requirements:** [Claude Code](https://claude.com/claude-code) and Python 3.11+
+installed. Runs in the Claude Code CLI and IDE extensions (not claude.ai web). The
+library underneath can also be used directly in Python (see "As a Python library"
+below).
+
 ## How it works
 
 Three layers (`tableau_interactor/cloud/vizql/`):
@@ -69,12 +100,13 @@ Discovery/extension tooling lives alongside: `watch.py` (capture req/resp +
 dispatcher calls), `hunt.py` (locate the dispatcher), `capture_drop.py`. The
 method for discovering a new command is documented in `PROTOCOL.md`.
 
-## Setup
+## As a Python library (developers)
 
+If you'd rather drive it from code instead of through Claude, set it up directly.
 Requires Python ≥ 3.11 and a Tableau Cloud account that can author.
 
 ```bash
-git clone <this-repo>
+git clone https://github.com/CooperFryar/tableau-vizql-bridge
 cd tableau-vizql-bridge
 
 python -m venv .venv
@@ -82,10 +114,10 @@ source .venv/bin/activate
 pip install -e .
 playwright install chromium
 
-cp .env.example .env      # then fill in your pod URL and credentials
+cp .env.example .env      # then fill in your pod URL (credentials optional)
 ```
 
-## Usage
+### Usage
 
 **1. Start the persistent browser session** (logs in and stays open; everything
 else attaches to it over CDP):
@@ -145,15 +177,6 @@ All via `.env` (see `.env.example`): `TABLEAU_CLOUD_URL`, `TABLEAU_EMAIL`,
   (`PROTOCOL.md` explains the capture workflow).
 - **Known sharp edges** are tracked inline in the code and `PROTOCOL.md §
   Known limitations`.
-
-## Optional: Claude Code skill - `/tableau`
-
-`.claude/skills/tableau/SKILL.md` lets [Claude Code](https://claude.com/claude-code)
-drive this package conversationally. Type `/tableau` and Claude checks the
-session, asks whether you want to continue the open workbook, start a new one, or
-do something else, then turns plain-English requests ("build a sales-by-region
-bar chart", "add a dashboard that cross-filters it") into wire commands and runs
-them. Optional - the library stands alone without it.
 
 ## Author & license
 

@@ -1,0 +1,11 @@
+{
+  "name": "tableau",
+  "displayName": "Tableau Cloud Authoring",
+  "version": "0.1.0",
+  "description": "Build and modify Tableau Cloud worksheets and dashboards by talking to Claude. Drives Tableau Cloud's internal VizQL command API (no official API). Sets up its own environment on first run.",
+  "author": { "name": "Cooper Fryar" },
+  "license": "MIT",
+  "homepage": "https://github.com/CooperFryar/tableau-vizql-bridge",
+  "repository": "https://github.com/CooperFryar/tableau-vizql-bridge",
+  "keywords": ["tableau", "tableau-cloud", "vizql", "data-visualization", "dashboards"]
+}

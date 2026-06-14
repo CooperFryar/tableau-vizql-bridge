@@ -1,0 +1,14 @@
+{
+  "name": "tableau-vizql-bridge",
+  "owner": { "name": "Cooper Fryar" },
+  "description": "Conversational Tableau Cloud authoring via the internal VizQL command API.",
+  "plugins": [
+    {
+      "name": "tableau",
+      "source": "./",
+      "description": "Build and modify Tableau Cloud worksheets and dashboards by talking to Claude. Sets itself up on first run.",
+      "license": "MIT",
+      "keywords": ["tableau", "tableau-cloud", "vizql", "data-visualization"]
+    }
+  ]
+}

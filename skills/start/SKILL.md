@@ -1,6 +1,6 @@
 ---
-name: tableau
-description: "Build or modify Tableau Cloud worksheets and dashboards by talking to Claude. Use when the user types /tableau or asks to create/edit a Tableau Cloud chart, filter, calculated field, parameter, or dashboard. Drives Tableau Cloud's internal VizQL command API via a bundled Python library, and sets up its own environment on first run. No coding required of the user."
+name: start
+description: "Build or modify Tableau Cloud worksheets and dashboards by talking to Claude. Use when the user types /tableau:start or asks to create/edit a Tableau Cloud chart, filter, calculated field, parameter, or dashboard. Drives Tableau Cloud's internal VizQL command API via a bundled Python library, and sets up its own environment on first run. No coding required of the user."
 ---
 
 # Tableau Cloud authoring

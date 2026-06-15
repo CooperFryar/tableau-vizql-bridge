@@ -72,7 +72,7 @@ In Claude Code:
 Then start it (or just ask Claude in plain English):
 
 ```
-/tableau:tableau
+/tableau:start
 ```
 
 On first run Claude installs a private environment, opens a browser for you to log
